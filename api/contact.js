@@ -1,4 +1,20 @@
-const { Resend } = require("resend");
+let Resend;
+
+// ---- SAFE IMPORT WRAPPER ----
+try {
+  ({ Resend } = require("resend"));
+} catch (e) {
+  console.error("Failed to load resend:", e);
+
+  module.exports = async function handler(req, res) {
+    return res.status(500).send(
+      "Resend dependency failed to load. Check that 'resend' is installed and deployed."
+    );
+  };
+
+  return;
+}
+// ---- END WRAPPER ----
 
 module.exports = async function handler(req, res) {
   // Health check so curl GET never crashes
@@ -13,14 +29,19 @@ module.exports = async function handler(req, res) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ ok: false, error: "Missing RESEND_API_KEY" });
+      return res.status(500).json({
+        ok: false,
+        error: "Missing RESEND_API_KEY",
+      });
     }
 
     const resend = new Resend(apiKey);
 
-    // Vercel usually gives req.body already parsed, but we handle string too
+    // Handle both parsed and string bodies
     const body =
-      typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
+      typeof req.body === "string"
+        ? JSON.parse(req.body || "{}")
+        : req.body || {};
 
     const name = (body.name || "").trim();
     const email = (body.email || "").trim();
@@ -30,11 +51,15 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({
         ok: false,
         error: "Missing fields",
-        missing: { name: !name, email: !email, message: !message },
+        missing: {
+          name: !name,
+          email: !email,
+          message: !message,
+        },
       });
     }
 
-    // Safe sender for testing (no domain verification needed yet)
+    // Safe sender (no domain verification required yet)
     const from = "Portfolio Contact <onboarding@resend.dev>";
     const to = "isaacdavidnino@gmail.com";
 
@@ -49,7 +74,6 @@ module.exports = async function handler(req, res) {
       replyTo: email,
     });
 
-    // Resend SDK sometimes returns { data, error }
     if (result?.error) {
       console.error("Resend error:", result.error);
       return res.status(500).json({
@@ -58,7 +82,10 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    return res.status(200).json({ ok: true, id: result?.data?.id });
+    return res.status(200).json({
+      ok: true,
+      id: result?.data?.id,
+    });
   } catch (err) {
     console.error("Contact API crash:", err);
     return res.status(500).json({ ok: false, error: "Server error" });
