@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac Nino | Creative Technologist</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/project-card.js"></script>
+    <script src="components/sky-layer.js"></script>
+    <script src="components/footer.js"></script>
+</head>
+<body class="bg-sky-50 text-slate-800 font-sans antialiased overflow-x-hidden">
+    <custom-navbar></custom-navbar>
+
+    <!-- Sky Background Layers -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+        <sky-layer depth="0" class="opacity-20"></sky-layer>
+        <sky-layer depth="1" class="opacity-40"></sky-layer>
+        <sky-layer depth="2" class="opacity-60"></sky-layer>
+    </div>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="w-38 h-38 sm: w-28 h-28 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-xl mx-auto mb-8">
+                    <img src="/assets/me.webp" alt="Isaac Nino" class="w-full h-full object-cover">
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-800">
+                    Isaac Nino
+                </h1>
+<p class="text-xl md:text-2xl text-slate-600 mb-10 max-w-2xl mx-auto">
+                    Creative Technologist crafting digital experiences that float between imagination and reality.
+                </p>
+                <div class="flex gap-4 justify-center">
+                    <a href="#work" class="px-8 py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-all shadow-lg hover:shadow-xl">
+                        View Work
+                    </a>
+                    <a href="#contact" class="px-8 py-3 border-2 border-indigo-600 text-indigo-600 rounded-full font-medium hover:bg-indigo-50 transition-all">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="work" class="py-20 px-6 bg-white/70 backdrop-blur-sm">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Selected Projects</h2>
+                
+                <!-- Filter Chips -->
+                <div class="flex flex-wrap gap-3 justify-center mb-12">
+                    <button class="filter-chip active" data-filter="all">All</button>
+                    <button class="filter-chip" data-filter="ai">AI</button>
+                    <button class="filter-chip" data-filter="ar">AR</button>
+                    <button class="filter-chip" data-filter="web">Web</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <project-card 
+                        title="CES Generative Postcard" 
+                        category="ai" 
+                        tags="Web Development, Generative AI"
+                        image="assets/ces.webp"
+                        project-id="ces-postcard"
+                    ></project-card>
+                    
+                    <project-card 
+                        title="MSDF FW2025" 
+                        category="web" 
+                        tags="Web Development"
+                        image="assets/msdf.webp"
+                        project-id="fw-2025"
+                    ></project-card>
+                    
+                    <project-card 
+                        title="Share-A-Coke" 
+                        category="ai" 
+                        tags="Generative AI"
+                        image="assets/shareACoke.webp"
+                        project-id="share-coke"
+                    ></project-card>
+                    
+                    <project-card 
+                        title="Funko POP! Yourself" 
+                        category="ar" 
+                        tags="Augmented Reality"
+                        image="assets/funkoPOP.webp"
+                        project-id="funko-pop"
+                    ></project-card>
+                    
+                    <project-card 
+                        title="Cadbury Women In Sports" 
+                        category="ai" 
+                        tags="Generative AI"
+                        image="assets/cadbury.webp"
+                        project-id="women-sports"
+                    ></project-card>
+                    
+                    <project-card 
+                        title="Kraft Heinz Make It Shake" 
+                        category="ar" 
+                        tags="Augmented Reality"
+                        image="assets/kraft-heinz.webp"
+                        project-id="heinz-shake"
+                    ></project-card>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="pt-8 pb-20 px-6 bg-gradient-to-b from-white/70 to-sky-50/70">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">About</h2>
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="md:w-1/3">
+                        <div class="rounded-full overflow-hidden border-4 border-white shadow-xl">
+                            <img src="assets/altMe.webp" alt="Isaac Nino" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-lg mb-6">
+                            I’m a Creative Technologist who loves building, testing, and validating ideas, especially with AI. With roots in AR, immersive tech, and rapid prototyping, I partner closely with design and engineering teams to turn early concepts into real, usable digital experiences.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="skill-tag">Tech Implementation</span>
+                            <span class="skill-tag">Web Development</span>
+                            <span class="skill-tag">Augmented Reality</span>
+                            <span class="skill-tag">Generative AI</span>
+                            <span class="skill-tag">Prototyping</span>
+                            <span class="skill-tag">UX-UI Design</span>
+                        </div>
+                        <a href="/assets/isaac_nino_resume.pdf"
+                           download
+                           class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800 transition-colors">
+                            Download Resume
+                            <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="py-24 px-6 bg-white/70">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                My Process
+                </h2>
+
+                <div class="process-grid">
+                    <div class="process-steps">
+
+                        <!-- Step 1 -->
+                        <div class="process-step">
+                        <div class="process-number">01</div>
+                        <div class="process-content">
+                            <h3>Discovery</h3>
+                            <p>Understanding the problem space through research and collaborative ideation.</p>
+                        </div>
+                        <span class="process-line"></span>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="process-step">
+                        <div class="process-number">02</div>
+                        <div class="process-content">
+                            <h3>Envision</h3>
+                            <p>Shape the vision of what a project needs to be for success.</p>
+                        </div>
+                        <span class="process-line"></span>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="process-step">
+                        <div class="process-number">03</div>
+                        <div class="process-content">
+                            <h3>Build</h3>
+                            <p>Thoughtful implementation with attention to performance and accessibility.</p>
+                        </div>
+                        <span class="process-line"></span>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="process-step">
+                        <div class="process-number">04</div>
+                        <div class="process-content">
+                            <h3>Launch</h3>
+                            <p>Refinement based on real-world usage and continuous improvement.</p>
+                        </div>
+                        </div>
+
+                    </div>
+
+                    <div class="process-visual">
+                        <span class="process-spine"></span>
+                        <span class="process-node"></span>
+                        <span class="process-node"></span>
+                        <span class="process-node"></span>
+                        <span class="process-node"></span>
+                    </div>
+                    </div>
+
+                </div>
+        </section>
+
+        <!-- Now Section -->
+        <section class="py-16 px-6 bg-indigo-50/50">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-indigo-100">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i data-feather="compass" class="mr-2 text-indigo-600"></i>
+                        Current Focus
+                    </h3>
+                    <p class="mb-4">
+                        Actively prototyping generative AI and immersive experiences alongside a search for creative technology opportunities
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="now-tag">#job-search</span>
+                        <span class="now-tag">#generative-ai</span>
+                        <span class="now-tag">#web-development</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-6 bg-gradient-to-b from-sky-50/70 to-white/70">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Get In Touch</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-1">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-all shadow hover:shadow-md">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 flex items-center">
+                                    <i data-feather="mail" class="mr-2 text-indigo-600"></i>
+                                    Email
+                                </h3>
+                                <a href="mailto:isaacdavidnino@gmail.com" class="text-indigo-600 hover:text-indigo-800 transition-colors">isaacdavidnino@gmail.com</a>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 flex items-center">
+                                    <i data-feather="map-pin" class="mr-2 text-indigo-600"></i>
+                                    Location
+                                </h3>
+                                <p>Based in Longmont, CO</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 flex items-center">
+                                    <i data-feather="share-2" class="mr-2 text-indigo-600"></i>
+                                    Social
+                                </h3>
+                                <div class="flex gap-4">
+                                    <a href="https://github.com/EmergentXR" class="social-icon" aria-label="GitHub" target="_blank">
+                                        <i data-feather="github"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/isaacdnino/" class="social-icon" aria-label="LinkedIn" target="_blank">
+                                        <i data-feather="linkedin"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/isaacdavidnino/" class="social-icon" aria-label="Instagram" target="_blank">
+                                        <i data-feather="instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-all opacity-0 invisible">
+        <i data-feather="arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- Project Modal -->
+    <div
+    id="project-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    >
+    <div class="bg-white rounded-xl max-w-3xl w-full p-6 md:p-8 relative shadow-xl max-h-[90vh] overflow-y-auto">
+
+        <!-- Close Button -->
+        <button
+        id="close-project-modal"
+        class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-xl"
+        aria-label="Close project details"
+        >
+        ✕
+        </button>
+
+        <!-- Header -->
+        <header class="mb-6">
+        <h2
+            id="modal-title"
+            class="text-2xl md:text-3xl font-bold mb-2"
+        ></h2>
+
+        <p
+            id="modal-tags"
+            class="text-sm text-slate-500"
+        ></p>
+        </header>
+
+        <!-- Hero Image -->
+        <img
+        id="modal-image"
+        class="w-full max-w-xl lg:max-w-lg xl:max-w-md mx-auto rounded-xl shadow-sm mb-8"
+        alt=""
+        />
+
+        <!-- Dynamic Content -->
+        <div class="modal-body space-y-6">
+        <!--
+            JS will inject content here, e.g.:
+
+            <p class="text-slate-700">Summary</p>
+
+            <section>
+            <h3 class="font-semibold mb-1">Challenge</h3>
+            <p class="text-slate-600">...</p>
+            </section>
+
+            <section>
+            <h3 class="font-semibold mb-1">Approach</h3>
+            <ul class="list-disc pl-5 text-slate-600">
+                <li>...</li>
+            </ul>
+            </section>
+
+            <section>
+            <h3 class="font-semibold mb-1">Result</h3>
+            <p class="text-slate-600">...</p>
+            </section>
+        -->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

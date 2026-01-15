@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import your font here (so it ends up in the built CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Paste ALL your existing custom CSS below this line */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-primary: 79, 70, 229;
+  --color-secondary: 99, 102, 241;
+  --color-sky-light: 239, 246, 255;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: rgb(var(--color-sky-light));
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Hero Image */
+#home img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#home img:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass Morphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Noise Texture */
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Filter chips — single source of truth */
+.filter-chip {
+  position: relative;
+  padding: 0.55rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(79, 70, 229, 0.35);
+  color: #4f46e5;
+  background: rgba(255, 255, 255, 0.75);
+  transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.18s ease,
+    color 0.18s ease, border-color 0.18s ease;
+}
+
+.filter-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08);
+}
+
+.filter-chip:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.35);
+}
+
+.filter-chip.active {
+  background: rgba(79, 70, 229, 0.95);
+  color: white;
+  border-color: rgba(79, 70, 229, 0.95);
+  box-shadow: 0 14px 26px rgba(79, 70, 229, 0.28);
+  transform: translateY(-1px);
+}
+
+/* Modal section headings */
+.section-heading {
+  display: inline-block;
+  color: #4f46e5;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 6px;
+  background-color: rgba(79, 70, 229, 0.35);
+  border-radius: 2px;
+}
+
+/* -------------------------
+   PROCESS SECTION (CLEAN)
+   ------------------------- */
+
+/* Outer 2-col layout: steps (left) + visual spine (right) */
+.process-grid {
+  display: grid;
+  grid-template-columns: 1fr 80px; /* tighter right column */
+  column-gap: 3rem;
+  align-items: stretch;
+}
+
+/* Stack steps */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* One step layout: number + content */
+.process-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.5rem;
+  align-items: start;
+  position: relative;
+}
+
+/* Number */
+.process-number {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4f46e5;
+  line-height: 1;
+  margin-top: 0.25rem;
+}
+
+/* Content */
+.process-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #0f172a;
+}
+
+.process-content p {
+  color: #475569;
+  max-width: 50ch;
+}
+
+/* Mobile/local connector line (under the number) */
+.process-line {
+  position: absolute;
+  left: 0.55rem;
+  top: 2.2rem;
+  width: 1px;
+  height: calc(100% - 2.2rem);
+  background: rgba(79, 70, 229, 0.25);
+}
+
+/* Remove line on last step */
+.process-step:last-child .process-line {
+  display: none;
+}
+
+/* Right-side spine column (hidden on mobile) */
+.process-visual {
+  position: relative;
+  display: none;
+}
+
+/* Spine */
+.process-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(79, 70, 229, 0.18);
+  transform: translateX(-50%);
+}
+
+/* Nodes */
+.process-node {
+  width: 8px;
+  height: 8px;
+  background: rgba(79, 70, 229, 0.6);
+  border-radius: 9999px;
+}
+
+/* Desktop: show spine, align nodes in 4 equal rows; hide the per-step mini lines */
+@media (min-width: 1024px) {
+  .process-visual {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    position: relative;
+  }
+
+  .process-node {
+    justify-self: center;
+    align-self: center;
+  }
+
+  /* On desktop, remove the mini line so it doesn't compete with the spine */
+  .process-line {
+    display: none;
+  }
+
+  .process-step {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
+/* Base hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* Revealed */
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
