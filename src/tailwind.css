@@ -252,3 +252,14 @@ body {
     max-height: 75svh;
   }
 }
+
+/* Modal: scroll content inside, keep container height fixed */
+.modal-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optional: keep the image from being insanely tall on mobile */
+#modal-image {
+  max-height: 32svh;
+  object-fit: cover;
+}
