@@ -114,7 +114,7 @@ class CustomNavbar extends HTMLElement {
           left: auto;
 
           /* make it less wide on mobile */
-          width: min(220px, calc(100vw - 1.25rem));
+          width: min(170px, calc(100vw - 1.25rem));
 
           background: white;
           flex-direction: column;
@@ -128,7 +128,7 @@ class CustomNavbar extends HTMLElement {
           border: 1px solid rgba(15, 23, 42, 0.08);
 
           /* force left alignment even though it's right-anchored */
-          text-align: left;
+          text-align: right;
           align-items: stretch;
         }
 
