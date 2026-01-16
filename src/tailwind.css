@@ -246,3 +246,9 @@ body {
     opacity: 1;
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+  .modal-safe {
+    max-height: 75svh;
+  }
+}
