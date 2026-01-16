@@ -103,26 +103,33 @@ class CustomNavbar extends HTMLElement {
           justify-content: center;
         }
 
-        /* The dropdown container */
+        /* Dropdown container */
         .nav-links {
           display: none;
           position: absolute;
+
+          /* anchor near the button (right aligned container) */
           top: calc(100% + 0.6rem);
           right: 0;
           left: auto;
 
-          width: min(260px, calc(100vw - 2rem));
+          /* make it less wide on mobile */
+          width: min(220px, calc(100vw - 1.25rem));
 
           background: white;
           flex-direction: column;
           gap: 0.25rem;
 
-          /* ✅ THIS is the container padding */
+          /* reduce dead space */
           padding: 0.25rem;
 
           border-radius: 0.75rem;
           box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
           border: 1px solid rgba(15, 23, 42, 0.08);
+
+          /* force left alignment even though it's right-anchored */
+          text-align: left;
+          align-items: stretch;
         }
 
         .nav-links.open {
@@ -135,13 +142,14 @@ class CustomNavbar extends HTMLElement {
           width: 100%;
           text-align: left;
 
-          /* ✅ THIS is the per-item tap padding */
-          padding: 0.75rem 0.9rem;
+          /* reduce horizontal padding */
+          padding: 0.7rem 0.8rem;
 
           border-radius: 0.6rem;
           color: #4b5563;
           text-decoration: none;
           font-weight: 500;
+
           transition: background 0.2s ease, color 0.2s ease;
         }
 
@@ -149,6 +157,7 @@ class CustomNavbar extends HTMLElement {
           background: rgba(79, 70, 229, 0.08);
           color: #4f46e5;
         }
+      }
       }
       </style>
 
