@@ -97,50 +97,59 @@ class CustomNavbar extends HTMLElement {
 
         /* Mobile layout */
         @media (max-width: 768px) {
-          .mobile-menu-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .nav-links {
-            display: none;
-            position: absolute;
-
-            /* anchor to the right, near the button */
-            top: calc(100% + 0.6rem);
-            right: 0;
-
-            /* compact dropdown size */
-            width: min(260px, calc(100vw - 2rem));
-
-            background: white;
-            flex-direction: column;
-            gap: 0.25rem;
-            padding: 0.5rem;
-            border-radius: 0.75rem;
-
-            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            }
-
-            /* Make items easier to tap + left aligned */
-            .nav-link {
-            display: block;
-            padding: 0.75rem 0.9rem;
-            border-radius: 0.6rem;
-            text-align: left;
-            }
-
-            .nav-link:hover {
-            background: rgba(79, 70, 229, 0.08);
-            }
-
-            /* keep your open state */
-            .nav-links.open {
-            display: flex;
-            }
+        .mobile-menu-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
+
+        /* The dropdown container */
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: calc(100% + 0.6rem);
+          right: 0;
+          left: auto;
+
+          width: min(260px, calc(100vw - 2rem));
+
+          background: white;
+          flex-direction: column;
+          gap: 0.25rem;
+
+          /* ✅ THIS is the container padding */
+          padding: 0.25rem;
+
+          border-radius: 0.75rem;
+          box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+          border: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        /* Each row is fully clickable */
+        .nav-link {
+          display: block;
+          width: 100%;
+          text-align: left;
+
+          /* ✅ THIS is the per-item tap padding */
+          padding: 0.75rem 0.9rem;
+
+          border-radius: 0.6rem;
+          color: #4b5563;
+          text-decoration: none;
+          font-weight: 500;
+          transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-link:hover {
+          background: rgba(79, 70, 229, 0.08);
+          color: #4f46e5;
+        }
+      }
       </style>
 
       <nav id="navbar">
