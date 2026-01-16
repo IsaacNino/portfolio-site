@@ -263,3 +263,38 @@ body {
   max-height: 32svh;
   object-fit: cover;
 }
+
+/* -------------------------
+   MOTION: Reveal system
+   ------------------------- */
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Initial hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Visible */
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: slightly stronger for big headings */
+.reveal.reveal-strong {
+  transform: translateY(14px);
+}

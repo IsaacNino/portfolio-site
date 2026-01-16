@@ -239,17 +239,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // =========================
-  // Fade-in on scroll
-  // =========================
-  const animateOnScroll = new IntersectionObserver(
-    (entries) => {
+  // -------------------------
+  // MOTION: Reveal on scroll
+  // -------------------------
+  const revealEls = Array.from(document.querySelectorAll(".reveal"));
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("animate-fadeIn");
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target); // once
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
   );
+
+  revealEls.forEach((el) => revealObserver.observe(el));
 
   document.querySelectorAll("section").forEach((section) => {
     animateOnScroll.observe(section);
