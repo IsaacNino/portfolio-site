@@ -337,3 +337,18 @@ body {
     opacity: 1 !important;
   }
 }
+
+/* subtle avatar float */
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.hero-avatar {
+  animation: heroFloat 5.5s ease-in-out infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-avatar { animation: none !important; }
+}

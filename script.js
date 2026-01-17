@@ -262,6 +262,11 @@ document.addEventListener("DOMContentLoaded", function () {
     animateOnScroll.observe(section);
   });
 
+  document.querySelectorAll("#home .reveal").forEach((el) => {
+    el.classList.add("is-visible");
+    revealObserver.unobserve(el);
+  });
+
   // =========================
   // Modal wiring
   // =========================
