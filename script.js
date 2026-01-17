@@ -254,14 +254,12 @@ document.addEventListener("DOMContentLoaded", function () {
     { threshold: 0.12 }
   );
 
+  // Observe anything with .reveal
   document.querySelectorAll(".reveal").forEach((el) => {
     revealObserver.observe(el);
   });
 
-  document.querySelectorAll("section").forEach((section) => {
-    animateOnScroll.observe(section);
-  });
-
+  // Make hero reveals visible immediately
   document.querySelectorAll("#home .reveal").forEach((el) => {
     el.classList.add("is-visible");
     revealObserver.unobserve(el);
