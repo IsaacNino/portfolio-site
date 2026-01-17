@@ -239,24 +239,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // -------------------------
-  // MOTION: Reveal on scroll
-  // -------------------------
-  const revealEls = Array.from(document.querySelectorAll(".reveal"));
-
+  // =========================
+  // Reveal on scroll
+  // =========================
   const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
+    (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target); // once
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target); // one-and-done
+        }
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+    { threshold: 0.12 }
   );
 
-  revealEls.forEach((el) => revealObserver.observe(el));
+  document.querySelectorAll(".reveal").forEach((el) => {
+    revealObserver.observe(el);
+  });
 
   document.querySelectorAll("section").forEach((section) => {
     animateOnScroll.observe(section);
