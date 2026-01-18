@@ -4,16 +4,28 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
   const backToTopButton = document.getElementById("back-to-top");
 
+  const contactSection = document.getElementById("contact");
+
+  if (backToTopButton && contactSection) {
+    const backToTopObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            backToTopButton.classList.remove("opacity-0", "invisible");
+            backToTopButton.classList.add("opacity-100", "visible");
+          } else {
+            backToTopButton.classList.remove("opacity-100", "visible");
+            backToTopButton.classList.add("opacity-0", "invisible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+  backToTopObserver.observe(contactSection);
+}
+
   if (backToTopButton) {
-    window.addEventListener("scroll", function () {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.remove("opacity-0", "invisible");
-        backToTopButton.classList.add("opacity-100", "visible");
-      } else {
-        backToTopButton.classList.remove("opacity-100", "visible");
-        backToTopButton.classList.add("opacity-0", "invisible");
-      }
-    });
 
     backToTopButton.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
